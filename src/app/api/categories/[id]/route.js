@@ -3,17 +3,17 @@ import Category from "@/models/Category";
 import cloudinary from "@/lib/cloudinary";
 import { corsMiddleware } from "@/lib/corsMiddleware";
 
-export async function GET(req, context) {
-  await dbConnect();
-  try {
-    const { id } = context.params; // ✅ Fix params extraction
-    const category = await Category.findById(id);
-    if (!category) return Response.json({ error: "Category not found" }, { status: 404 });
-    return Response.json(category, corsMiddleware());
-  } catch (error) {
-    return Response.json({ error: "Invalid category ID" }, { status: 400, ...corsMiddleware() });
-  }
-}
+// export async function GET(req, context) {
+//   await dbConnect();
+//   try {
+//     const { id } = context.params; 
+//     const category = await Category.findById(id);
+//     if (!category) return Response.json({ error: "Category not found" }, { status: 404 });
+//     return Response.json(category, corsMiddleware());
+//   } catch (error) {
+//     return Response.json({ error: "Invalid category ID" }, { status: 400, ...corsMiddleware() });
+//   }
+// }
 
 export async function PUT(req, context) {
   await dbConnect();
